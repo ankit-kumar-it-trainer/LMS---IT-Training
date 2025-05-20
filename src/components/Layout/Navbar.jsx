@@ -1,11 +1,20 @@
-import { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Fragment, useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useAuth } from '../../context/AuthContext';
 
+const navLinks = [
+  { name: 'Home', to: '/' },
+  { name: 'Courses', to: '/courses' },
+  { name: 'About', to: '/about' },
+  { name: 'Contact', to: '/contact' },
+  { name: 'Login', to: '/login' },
+];
+
 const Navbar = () => {
   const { user, logout } = useAuth();
+  const [open, setOpen] = useState(false);
 
   const navigation = [
     { name: 'Home', href: '/', current: true },
@@ -26,30 +35,29 @@ const Navbar = () => {
   }
 
   return (
-    <Disclosure as="nav" className="bg-gray-800">
-      {({ open }) => (
+    <Disclosure as="nav" className="sticky top-0 z-50 bg-white shadow">
+      {({ open: disclosureOpen }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
               <div className="flex items-center">
                 <div className="flex-shrink-0">
-                  <span className="text-white text-xl font-bold">Ankit Kumar – IT Trainer</span>
+                  <span className="text-blue-700 text-xl font-bold">Ankit Kumar – IT Trainer</span>
                 </div>
                 <div className="hidden md:block">
                   <div className="ml-10 flex items-baseline space-x-4">
-                    {navigation.map((item) => (
-                      <Link
-                        key={item.name}
-                        to={item.href}
-                        className={classNames(
-                          item.current
-                            ? 'bg-gray-900 text-white'
-                            : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'rounded-md px-3 py-2 text-sm font-medium'
-                        )}
+                    {navLinks.map((link) => (
+                      <NavLink
+                        key={link.name}
+                        to={link.to}
+                        className={({ isActive }) =>
+                          `text-base font-medium hover:text-blue-600 transition ${
+                            isActive ? 'text-blue-700 underline' : 'text-gray-700'
+                          }`
+                        }
                       >
-                        {item.name}
-                      </Link>
+                        {link.name}
+                      </NavLink>
                     ))}
                   </div>
                 </div>
@@ -114,7 +122,7 @@ const Navbar = () => {
               <div className="-mr-2 flex md:hidden">
                 <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                   <span className="sr-only">Open main menu</span>
-                  {open ? (
+                  {disclosureOpen ? (
                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
                   ) : (
                     <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
@@ -126,39 +134,21 @@ const Navbar = () => {
 
           <Disclosure.Panel className="md:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className={classNames(
-                    item.current
-                      ? 'bg-gray-900 text-white'
-                      : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block rounded-md px-3 py-2 text-base font-medium'
-                  )}
+              {navLinks.map((link) => (
+                <NavLink
+                  key={link.name}
+                  to={link.to}
+                  className={({ isActive }) =>
+                    `block py-2 text-base font-medium hover:text-blue-600 transition ${
+                      isActive ? 'text-blue-700 underline' : 'text-gray-700'
+                    }`
+                  }
+                  onClick={() => setOpen(false)}
                 >
-                  {item.name}
-                </Link>
+                  {link.name}
+                </NavLink>
               ))}
             </div>
-            {!user && (
-              <div className="border-t border-gray-700 pb-3 pt-4">
-                <div className="space-y-1 px-2">
-                  <Link
-                    to="/login"
-                    className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
-                  >
-                    Login
-                  </Link>
-                  <Link
-                    to="/register"
-                    className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
-                  >
-                    Register
-                  </Link>
-                </div>
-              </div>
-            )}
           </Disclosure.Panel>
         </>
       )}
