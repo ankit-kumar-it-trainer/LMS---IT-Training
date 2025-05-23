@@ -1,52 +1,88 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Tab } from '@headlessui/react';
-import { StarIcon } from '@heroicons/react/24/solid';
 
+const StudentAvatar = ({ index }) => (
+  <img
+    src={`https://i.pravatar.cc/40?img=${index}`}
+    alt="Student"
+    className="w-8 h-8 rounded-full border-2 border-gray-900"
+  />
+);
+
+const CourseCard = ({ title, link, isLive, bordered }) => (
+  <Link 
+    to={link} 
+    className={`block p-6 rounded-lg transition-all duration-300 hover:scale-105 bg-white/5 backdrop-blur-lg border border-white/10 hover:bg-white/10 hover:border-white/20`}
+  >
+    <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
+    {isLive && (
+      <span className="inline-flex items-center gap-1 text-red-400 text-sm font-medium">
+        <span className="animate-pulse">●</span> Live
+      </span>
+    )}
+  </Link>
+);
+
+const features = [
+  {
+    title: "Dev Challenges",
+    link: "/challenges",
+    bordered: true
+  },
+  {
+    title: "Tutorials",
+    link: "/tutorials",
+    bordered: true
+  },
+  {
+    title: "Articles",
+    link: "/articles",
+    bordered: true
+  },
+  {
+    title: "Core CS Subjects",
+    link: "/cs-subjects",
+    bordered: true
+  },
+  {
+    title: "Free Web Dev",
+    link: "/free-web-dev",
+    bordered: true
+  },
+  {
+    title: "Interview Experiences",
+    link: "/interviews",
+    bordered: true
+  },
+  {
+    title: "Mock Tests",
+    link: "/mock-tests",
+    bordered: true
+  },
+  {
+    title: "Quick Compiler",
+    link: "/compiler",
+    bordered: true
+  }
+];
+
+// Define static data for categories and courses
 const categories = [
-  { name: 'Featured', courses: [] },
-  { name: 'Web Development', courses: [] },
-  { name: 'Data Science', courses: [] },
-  { name: 'Mobile Development', courses: [] },
+  { name: 'Featured' },
+  { name: 'Web Development' },
+  { name: 'Data Structures' },
+  { name: 'Algorithms' },
+  { name: 'Machine Learning' },
+  { name: 'Interview Prep' }
 ];
 
 const courses = [
-  {
-    id: 1,
-    title: 'Complete React Developer Course',
-    description: 'Master React.js and build modern web applications',
-    videoId: 'w7ejDZ8SWv8',
-    instructor: 'Ankit Kumar',
-    rating: 4.9,
-    students: 1234,
-    price: '$99.99',
-    category: 'Web Development',
-    image: `https://img.youtube.com/vi/w7ejDZ8SWv8/maxresdefault.jpg`
-  },
-  {
-    id: 2,
-    title: 'Advanced JavaScript Concepts',
-    description: 'Deep dive into JavaScript fundamentals and advanced topics',
-    videoId: 'Mus_vwhTCq0',
-    instructor: 'Ankit Kumar',
-    rating: 4.8,
-    students: 987,
-    price: '$89.99',
-    category: 'Web Development',
-    image: `https://img.youtube.com/vi/Mus_vwhTCq0/maxresdefault.jpg`
-  },
-  {
-    id: 3,
-    title: 'Python for Data Science',
-    description: 'Learn Python programming for data analysis and visualization',
-    videoId: 'rfscVS0vtbw',
-    instructor: 'Ankit Kumar',
-    rating: 4.7,
-    students: 2341,
-    price: '$79.99',
-    category: 'Data Science',
-    image: `https://img.youtube.com/vi/rfscVS0vtbw/maxresdefault.jpg`
-  },
+  { name: 'React Basics', category: 'Web Development' },
+  { name: 'Advanced React', category: 'Web Development' },
+  { name: 'Data Structures in C++', category: 'Data Structures' },
+  { name: 'Dynamic Programming', category: 'Algorithms' },
+  { name: 'Intro to Machine Learning', category: 'Machine Learning' },
+  { name: 'Cracking the Coding Interview', category: 'Interview Prep' }
 ];
 
 // Update categories with courses
@@ -57,101 +93,60 @@ categories.forEach(category => {
 });
 
 const CoursesSection = () => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
   return (
-    <section className="bg-gray-50 py-16 sm:py-24">
+    <section className="relative bg-gradient-to-br from-[#1B1834] to-[#141328] py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Explore Our Popular Courses
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Learn from industry experts and advance your career with our comprehensive courses
+        {/* Hero Content */}
+        <div className="mb-16">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
+            Crack the Code to<br />Success with CodeHelp
+          </h1>
+          <p className="text-lg text-gray-300 max-w-2xl mb-8">
+            Elevate your programming skills, solve challenges, and unlock the world of coding possibilities.
           </p>
+          <div className="flex flex-wrap gap-4">
+            <Link
+              to="/courses"
+              className="inline-flex items-center px-6 py-3 bg-white hover:bg-gray-100 text-[#1B1834] font-semibold rounded-lg transition-all duration-300 hover:shadow-lg transform hover:scale-105"
+            >
+              View Courses
+            </Link>
+            <Link
+              to="/watch"
+              className="inline-flex items-center px-6 py-3 border border-white/20 text-white hover:bg-white/10 font-semibold rounded-lg transition-all duration-300 group"
+            >
+              <span>Watch Video</span>
+              <span className="ml-2 text-red-400 group-hover:text-red-300">Live →</span>
+            </Link>
+          </div>
+
+          {/* Students Counter */}
+          <div className="mt-12 inline-flex items-center gap-2 px-6 py-3 bg-white/5 backdrop-blur-lg rounded-full border border-white/10">
+            <div className="flex -space-x-2">
+              {[1, 2, 3, 4, 5].map((i) => (
+                <StudentAvatar key={i} index={i} />
+              ))}
+            </div>
+            <span className="text-white font-semibold ml-2">70,000+ Happy Students</span>
+          </div>
         </div>
 
-        <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
-          <Tab.List className="flex space-x-1 rounded-xl bg-blue-100 p-1 mt-12 max-w-2xl mx-auto">
-            {categories.map((category) => (
-              <Tab
-                key={category.name}
-                className={({ selected }) =>
-                  `w-full rounded-lg py-2.5 text-sm font-medium leading-5
-                  ${
-                    selected
-                      ? 'bg-white text-blue-700 shadow'
-                      : 'text-blue-600 hover:bg-white/[0.12] hover:text-blue-800'
-                  }`
-                }
-              >
-                {category.name}
-              </Tab>
-            ))}
-          </Tab.List>
-          <Tab.Panels className="mt-8">
-            {categories.map((category, idx) => (
-              <Tab.Panel
-                key={idx}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-              >
-                {category.courses.map((course) => (
-                  <div
-                    key={course.id}
-                    className="bg-white rounded-2xl shadow-lg overflow-hidden transition-transform hover:scale-[1.02] hover:shadow-xl"
-                  >
-                    <div className="aspect-w-16 aspect-h-9">
-                      <img
-                        src={course.image}
-                        alt={course.title}
-                        className="object-cover w-full h-48"
-                      />
-                    </div>
-                    <div className="p-6">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm font-medium text-blue-600">
-                          {course.category}
-                        </span>
-                        <div className="flex items-center">
-                          <StarIcon className="h-5 w-5 text-yellow-400" />
-                          <span className="ml-1 text-sm font-medium text-gray-600">
-                            {course.rating}
-                          </span>
-                        </div>
-                      </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">
-                        {course.title}
-                      </h3>
-                      <p className="text-gray-600 mb-4 line-clamp-2">
-                        {course.description}
-                      </p>
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center">
-                          <img
-                            src="https://via.placeholder.com/40"
-                            alt={course.instructor}
-                            className="h-8 w-8 rounded-full"
-                          />
-                          <span className="ml-2 text-sm text-gray-600">
-                            {course.instructor}
-                          </span>
-                        </div>
-                        <span className="font-bold text-gray-900">{course.price}</span>
-                      </div>
-                      <Link
-                        to={`/courses/${course.id}`}
-                        className="mt-4 block w-full text-center bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
-                      >
-                        Enroll Now
-                      </Link>
-                    </div>
-                  </div>
-                ))}
-              </Tab.Panel>
-            ))}
-          </Tab.Panels>
-        </Tab.Group>
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {features.map((feature, index) => (
+            <CourseCard
+              key={index}
+              title={feature.title}
+              link={feature.link}
+              bordered={feature.bordered}
+            />
+          ))}
+        </div>
       </div>
+
+      {/* Decorative Elements */}
+      <div className="absolute left-0 bottom-0 w-96 h-96 bg-blue-500/10 rounded-full filter blur-[100px]"></div>
+      <div className="absolute right-0 top-0 w-96 h-96 bg-indigo-500/10 rounded-full filter blur-[100px]"></div>
     </section>
   );
 };

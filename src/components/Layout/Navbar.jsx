@@ -1,6 +1,5 @@
-import { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useAuth } from '../../context/AuthContext';
 
@@ -9,150 +8,148 @@ const navLinks = [
   { name: 'Courses', to: '/courses' },
   { name: 'About', to: '/about' },
   { name: 'Contact', to: '/contact' },
-  { name: 'Login', to: '/login' },
 ];
 
 const Navbar = () => {
   const { user, logout } = useAuth();
-  const [open, setOpen] = useState(false);
-
-  const navigation = [
-    { name: 'Home', href: '/', current: true },
-    ...(user
-      ? user.role === 'admin'
-        ? [{ name: 'Dashboard', href: '/admin-dashboard', current: false }]
-        : [{ name: 'Dashboard', href: '/student-dashboard', current: false }]
-      : []),
-  ];
-
-  const userNavigation = [
-    { name: 'Your Profile', href: '#' },
-    { name: 'Sign out', href: '#', onClick: logout },
-  ];
-
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(' ');
-  }
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <Disclosure as="nav" className="sticky top-0 z-50 bg-white shadow">
-      {({ open: disclosureOpen }) => (
-        <>
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex h-16 items-center justify-between">
-              <div className="flex items-center">
-                <div className="flex-shrink-0">
-                  <span className="text-blue-700 text-xl font-bold">Ankit Kumar – IT Trainer</span>
-                </div>
-                <div className="hidden md:block">
-                  <div className="ml-10 flex items-baseline space-x-4">
-                    {navLinks.map((link) => (
-                      <NavLink
-                        key={link.name}
-                        to={link.to}
-                        className={({ isActive }) =>
-                          `text-base font-medium hover:text-blue-600 transition ${
-                            isActive ? 'text-blue-700 underline' : 'text-gray-700'
-                          }`
-                        }
-                      >
-                        {link.name}
-                      </NavLink>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div className="hidden md:block">
-                <div className="ml-4 flex items-center md:ml-6">
-                  {user ? (
-                    <Menu as="div" className="relative ml-3">
-                      <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                        <span className="sr-only">Open user menu</span>
-                        <div className="h-8 w-8 rounded-full bg-gray-500 flex items-center justify-center text-white">
-                          {user.name?.[0] || 'U'}
-                        </div>
-                      </Menu.Button>
-                      <Transition
-                        as={Fragment}
-                        enter="transition ease-out duration-100"
-                        enterFrom="transform opacity-0 scale-95"
-                        enterTo="transform opacity-100 scale-100"
-                        leave="transition ease-in duration-75"
-                        leaveFrom="transform opacity-100 scale-100"
-                        leaveTo="transform opacity-0 scale-95"
-                      >
-                        <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                          {userNavigation.map((item) => (
-                            <Menu.Item key={item.name}>
-                              {({ active }) => (
-                                <a
-                                  href={item.href}
-                                  onClick={item.onClick}
-                                  className={classNames(
-                                    active ? 'bg-gray-100' : '',
-                                    'block px-4 py-2 text-sm text-gray-700'
-                                  )}
-                                >
-                                  {item.name}
-                                </a>
-                              )}
-                            </Menu.Item>
-                          ))}
-                        </Menu.Items>
-                      </Transition>
-                    </Menu>
-                  ) : (
-                    <div className="space-x-4">
-                      <Link
-                        to="/login"
-                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                      >
-                        Login
-                      </Link>
-                      <Link
-                        to="/register"
-                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                      >
-                        Register
-                      </Link>
-                    </div>
-                  )}
-                </div>
-              </div>
-              <div className="-mr-2 flex md:hidden">
-                <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                  <span className="sr-only">Open main menu</span>
-                  {disclosureOpen ? (
-                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
-                  ) : (
-                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
-                  )}
-                </Disclosure.Button>
-              </div>
-            </div>
+    <header className="sticky top-0 z-50 bg-[#1B1834]/80 backdrop-blur-lg border-b border-white/10">
+      <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2">
+          <img src="/favicon.ico" alt="Logo" className="h-10 w-10" />
+          <div className="flex flex-col">
+            <span className="text-lg font-bold text-white">Ankit Kumar - IT Trainer</span>
+            <span className="text-xs text-gray-300">by Ankit Kumar</span>
           </div>
+        </Link>
 
-          <Disclosure.Panel className="md:hidden">
-            <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-              {navLinks.map((link) => (
-                <NavLink
-                  key={link.name}
-                  to={link.to}
-                  className={({ isActive }) =>
-                    `block py-2 text-base font-medium hover:text-blue-600 transition ${
-                      isActive ? 'text-blue-700 underline' : 'text-gray-700'
-                    }`
-                  }
-                  onClick={() => setOpen(false)}
+        {/* Desktop Nav */}
+        <div className="hidden md:flex flex-1 justify-center gap-8">
+          {navLinks.map((link) => (
+            <NavLink
+              key={link.name}
+              to={link.to}
+              className={({ isActive }) =>
+                `text-base font-medium transition duration-200 ${
+                  isActive 
+                    ? 'text-white border-b-2 border-white/70' 
+                    : 'text-gray-300 hover:text-white hover:border-b-2 hover:border-white/30'
+                }`
+              }
+            >
+              {link.name}
+            </NavLink>
+          ))}
+        </div>
+
+        {/* Auth Buttons */}
+        <div className="hidden md:flex items-center gap-4">
+          {user ? (
+            <>
+              <Link 
+                to={user.role === 'admin' ? '/admin-dashboard' : '/student-dashboard'}
+                className="px-6 py-2 text-sm font-medium text-gray-300 hover:text-white transition-all duration-300"
+              >
+                Dashboard
+              </Link>
+              <button
+                onClick={logout}
+                className="px-6 py-2 text-sm font-medium bg-white hover:bg-gray-100 text-[#1B1834] rounded-lg transition-all duration-300 hover:shadow-lg transform hover:scale-105"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link 
+                to="/login" 
+                className="px-6 py-2 text-sm font-medium text-gray-300 hover:text-white transition-all duration-300"
+              >
+                Login
+              </Link>
+              <Link 
+                to="/register"
+                className="px-6 py-2 text-sm font-medium bg-white hover:bg-gray-100 text-[#1B1834] rounded-lg transition-all duration-300 hover:shadow-lg transform hover:scale-105"
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button 
+          className="md:hidden text-white hover:text-gray-300 transition"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? <XMarkIcon className="h-7 w-7" /> : <Bars3Icon className="h-7 w-7" />}
+        </button>
+      </nav>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="md:hidden bg-[#141328] border-t border-white/10 px-4 py-2">
+          <div className="flex flex-col gap-3">
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.name}
+                to={link.to}
+                className={({ isActive }) =>
+                  `py-2 text-base font-medium transition-all duration-300 ${
+                    isActive 
+                      ? 'text-white pl-4 border-l-2 border-white' 
+                      : 'text-gray-300 hover:text-white hover:pl-4 hover:border-l-2 hover:border-white/30'
+                  }`
+                }
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.name}
+              </NavLink>
+            ))}
+            {user ? (
+              <>
+                <Link
+                  to={user.role === 'admin' ? '/admin-dashboard' : '/student-dashboard'}
+                  className="py-2 text-base font-medium text-gray-300 hover:text-white transition-all duration-300"
+                  onClick={() => setMenuOpen(false)}
                 >
-                  {link.name}
-                </NavLink>
-              ))}
-            </div>
-          </Disclosure.Panel>
-        </>
+                  Dashboard
+                </Link>
+                <button
+                  onClick={() => {
+                    logout();
+                    setMenuOpen(false);
+                  }}
+                  className="py-2 text-base font-medium text-white hover:text-gray-300 transition-all duration-300"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  className="py-2 text-base font-medium text-gray-300 hover:text-white transition-all duration-300"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/register"
+                  className="py-2 text-base font-medium text-white hover:text-gray-300 transition-all duration-300"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Sign Up
+                </Link>
+              </>
+            )}
+          </div>
+        </div>
       )}
-    </Disclosure>
+    </header>
   );
 };
 

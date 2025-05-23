@@ -2,13 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --color-dark-blue: #1B1834;
+    --color-darker-blue: #141328;
+    --color-lighter-blue: #2C2A4A;
+    --color-accent-blue: #3B3968;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-[#1B1834] to-[#141328];
+  }
+}
+
 @layer components {
   .btn-primary {
-    @apply px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+    @apply px-6 py-3 bg-white text-[#1B1834] hover:bg-gray-100 font-semibold rounded-lg transition-all duration-300 hover:shadow-lg transform hover:scale-105;
   }
+
+  .btn-secondary {
+    @apply px-6 py-3 border border-white/20 text-white hover:bg-white/10 font-semibold rounded-lg transition-all duration-300;
+  }
+
+  .card-gradient {
+    @apply bg-gradient-to-br from-[#2C2A4A] to-[#1B1834] border border-white/10 backdrop-blur-sm;
+  }
+
+  .glass-effect {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10;
+  }
+
   .input-field {
-    @apply mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500;
+    @apply mt-1 block w-full rounded-lg bg-[#141328] border border-white/10 text-white px-4 py-3 focus:outline-none focus:border-white/30 transition-all duration-300;
   }
+
   .form-label {
     @apply block text-sm font-medium text-gray-700;
   }
