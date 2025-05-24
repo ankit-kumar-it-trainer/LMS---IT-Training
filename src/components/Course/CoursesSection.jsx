@@ -99,7 +99,7 @@ const CoursesSection = () => {
         {/* Hero Content */}
         <div className="mb-16">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
-            Crack the Code to<br />Success with CodeHelp
+            Crack the Code to<br />Success with Ankit Kumar - IT Trainer
           </h1>
           <p className="text-lg text-gray-300 max-w-2xl mb-8">
             Elevate your programming skills, solve challenges, and unlock the world of coding possibilities.

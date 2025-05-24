@@ -8,7 +8,7 @@ const ContactSection = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: 'url("/path-to-your-image.jpg")', // Add your background image
-          backgroundColor: 'rgba(0, 0, 0, 0.9)',
+          backgroundColor: '#17152E',
         }}
       />
 
@@ -113,10 +113,10 @@ const ContactSection = () => {
               <h3 className="text-xl font-semibold mb-6">Contact Information</h3>
               <div className="mb-8">
                 <a
-                  href="mailto:support@codehelp.in"
+                  href="mailto:support@ankitkumarittrainer.in"
                   className="text-white hover:underline flex items-center mb-4"
                 >
-                  <span className="text-lg">support@codehelp.in</span>
+                  <span className="text-lg">support@ankitkumarittrainer.in</span>
                 </a>
               </div>
             </div>

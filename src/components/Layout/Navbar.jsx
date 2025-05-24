@@ -22,7 +22,7 @@ const Navbar = () => {
           <img src="/favicon.ico" alt="Logo" className="h-10 w-10" />
           <div className="flex flex-col">
             <span className="text-lg font-bold text-white">Ankit Kumar - IT Trainer</span>
-            <span className="text-xs text-gray-300">by Ankit Kumar</span>
+            <span className="text-xs text-gray-300">Learn to code like a pro</span>
           </div>
         </Link>
 

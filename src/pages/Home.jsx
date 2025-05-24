@@ -6,11 +6,13 @@ import ContactSection from '../components/Layout/ContactSection';
 import StartJourneySection from '../components/Layout/StartJourneySection';
 import Footer from '../components/Layout/Footer';
 import AdvantagesSection from '../components/Layout/AdvantagesSection';
+import FacingIssueButton from '../components/Common/FacingIssueButton';
 
-const Home = () => {
-  return (
+const Home = () => {  return (
     <div className="bg-gray-50 min-h-screen flex flex-col">
-      <Navbar />      <main className="flex-1">
+      <Navbar />
+      <FacingIssueButton />
+      <main className="flex-1">
         <HeroSection />
         <CoursesSection />
         <AdvantagesSection />

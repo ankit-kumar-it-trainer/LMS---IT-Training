@@ -63,8 +63,8 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">GET IN TOUCH</h3>
             <div className="flex items-center gap-2 text-gray-400">
               <FaEnvelope className="text-primary" />
-              <a href="mailto:Support@Codehelp.in" className="hover:text-primary transition">
-                Support@Codehelp.in
+              <a href="mailto:Support@ankitkumarittrainer.in" className="hover:text-primary transition">
+                Support@ankitkumarittrainer.in
               </a>
             </div>
           </div>
@@ -77,16 +77,7 @@ const Footer = () => {
           Copyright © {currentYear} Ankit Kumar - IT Trainer. All Rights Reserved.
         </p>
       </div>
-
-      {/* Help Button */}
-      <div className="fixed bottom-6 right-6">
-        <button 
-          className="flex items-center gap-2 bg-white text-[#1B1834] px-4 py-2 rounded-full shadow-lg hover:bg-gray-100 transition"
-        >
-          <span role="img" aria-label="question" className="text-xl">🤔</span>
-          <span className="font-medium">Facing an issue?</span>
-        </button>
-      </div>
+      
     </footer>
   );
 };
