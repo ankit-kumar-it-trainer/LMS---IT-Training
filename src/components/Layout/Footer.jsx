@@ -1,83 +1,166 @@
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaEnvelope } from 'react-icons/fa';
+import { FaYoutube, FaLinkedin, FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
+  const [email, setEmail] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle email subscription logic here
+    console.log('Email submitted:', email);
+    setEmail('');
+  };
+
   return (
-    <footer className="bg-[#16142a] text-white py-16">
-      {/* Main Footer Content */}
+    <footer className="bg-[#020817]  text-white pt-16 pb-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Brand Section */}
-          <div className="space-y-6">
-            <Link to="/" className="flex items-center gap-2">
-              <img src="/favicon.ico" alt="Logo" className="h-8 w-8" />
-              <div className="flex flex-col">
-                <span className="text-lg font-bold">Ankit Kumar - IT Trainer</span>
-                <span className="text-xs text-gray-400">Learn to code like a pro</span>
+        <div className="grid grid-cols-1 md:grid-cols-[2fr,1fr,1fr] gap-12">
+          {/* Left Column - Profile */}
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/cricket-pandith-34702.appspot.com/o/logo.png?alt=media&token=6434420b-c70c-449e-b459-160f4c268b1b"
+                alt="Ankit Kumar - IT Trainer"
+                className="w-14 h-14 rounded-full object-cover"
+              />
+              <div>
+                <h2 className="text-2xl font-bold tracking-tight">Ankit Kumar - IT Trainer</h2>
+                <p className="text-xs text-gray-300 -mt-1">Learn to code like a pro</p>
               </div>
-            </Link>
-            <p className="text-sm text-gray-400">
-              The Ultimate Guide To Ace SDE Interviews.
+            </div>
+
+            <p className="text-gray-400 text-sm leading-relaxed mb-8 max-w-md">
+              Learn to code like a pro with Ankit Kumar. Expert IT Training, Coding Tips, and Career Guidance.
             </p>
+
+            <div className="space-y-4 mb-8">
+              <div className="flex items-center gap-3">
+                <span className="text-gray-400">✉️</span>
+                <a href="mailto:contact@krishnaik.in" className="text-gray-400 hover:text-white transition-colors">
+                  contact@krishnaik.in
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-gray-400">📞</span>
+                <a href="tel:+919111533440" className="text-gray-400 hover:text-white transition-colors">
+                  +91 9111533440
+                </a>
+              </div>
+            </div>
+
+            <form onSubmit={handleSubmit} className="max-w-md">
+              <div className="flex">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter Your Email"
+                  className="flex-1 bg-white rounded-l-md px-4 py-2.5 text-gray-900 text-sm focus:outline-none"
+                  required
+                />
+                <button
+                  type="submit"
+                  className="bg-blue-500 hover:bg-[#F08C1B]/90 text-white px-4 py-2.5 rounded-r-md transition-colors"
+                >
+                  →
+                </button>
+              </div>
+            </form>
           </div>
 
-          {/* Quick Links */}
+          {/* Middle Column - Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link to="/" className="text-gray-400 hover:text-primary transition">Home</Link>
-              </li>
-              <li>
-                <Link to="/courses" className="text-gray-400 hover:text-primary transition">Courses</Link>
-              </li>
-              <li>
-                <Link to="/labs" className="text-gray-400 hover:text-primary transition">Labs</Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-gray-400 hover:text-primary transition">Contact</Link>
-              </li>
-            </ul>
+            <div className="space-y-4">
+              <Link to="/privacy-policy" className="block text-gray-400 hover:text-white transition-colors">
+                Privacy Policy
+              </Link>
+              <Link to="/terms" className="block text-gray-400 hover:text-white transition-colors">
+                Terms & Conditions
+              </Link>
+              <Link to="/refund-policy" className="block text-gray-400 hover:text-white transition-colors">
+                Refund Policy
+              </Link>
+              <Link to="/about" className="block text-gray-400 hover:text-white transition-colors">
+                About Us
+              </Link>
+              <Link to="/contact" className="block text-gray-400 hover:text-white transition-colors">
+                Contact Us
+              </Link>
+            </div>
           </div>
 
-          {/* Legal */}
+          {/* Right Column - Social Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Legal</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link to="/privacy-policy" className="text-gray-400 hover:text-primary transition">Privacy Policy</Link>
-              </li>
-              <li>
-                <Link to="/terms" className="text-gray-400 hover:text-primary transition">Terms of use</Link>
-              </li>
-              <li>
-                <Link to="/refund-policy" className="text-gray-400 hover:text-primary transition">Refund & Cancellation Policy</Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* GET IN TOUCH */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">GET IN TOUCH</h3>
-            <div className="flex items-center gap-2 text-gray-400">
-              <FaEnvelope className="text-primary" />
-              <a href="mailto:Support@ankitkumarittrainer.in" className="hover:text-primary transition">
-                Support@ankitkumarittrainer.in
+            <div className="flex flex-col gap-4">
+              <a
+                href="https://youtube.com/@krishnaik06"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center"
+              >
+           <div class="bg-[#020817] p-2.5 rounded-md border border-white mr-3">
+                  <FaYoutube size={20} className="text-white" />
+                </div>
+                <span className="text-gray-400 hover:text-white transition-colors">Youtube</span>
+              </a>
+              <a
+                href="https://linkedin.com/in/krish-naik-"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center"
+              >
+         <div class="bg-[#020817] p-2.5 rounded-md border border-white mr-3">
+                  <FaLinkedin size={20} className="text-white" />
+                </div>
+                <span className="text-gray-400 hover:text-white transition-colors">LinkedIn</span>
+              </a>
+              <a
+                href="https://instagram.com/krishnaik06"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center"
+              >
+             <div class="bg-[#020817] p-2.5 rounded-md border border-white mr-3">
+                  <FaInstagram size={20} className="text-white" />
+                </div>
+                <span className="text-gray-400 hover:text-white transition-colors">Instagram</span>
+              </a>
+              <a
+                href="https://twitter.com/krishnaik06"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center"
+              >
+                <div class="bg-[#020817] p-2.5 rounded-md border border-white mr-3">
+                  <FaXTwitter size={20} className="text-white" />
+                </div>
+                <span className="text-gray-400 hover:text-white transition-colors">Twitter</span>
+              </a>
+              <a
+                href="https://wa.me/919111533440"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center"
+              >
+            <div class="bg-[#020817] p-2.5 rounded-md border border-white mr-3">
+                  <FaWhatsapp size={20} className="text-white" />
+                </div>
+                <span className="text-gray-400 hover:text-white transition-colors">Whatsapp</span>
               </a>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="mt-12 pt-8 border-t border-gray-700">
-        <p className="text-center text-gray-400 text-sm">
-          Copyright © {currentYear} Ankit Kumar - IT Trainer. All Rights Reserved.
-        </p>
+        {/* Copyright */}
+        <div className="mt-16 pt-8 border-t border-gray-800">
+          <p className="text-gray-400 text-sm text-center">
+            © {currentYear} KrishAITechnologies. All rights reserved.
+          </p>
+        </div>
       </div>
-      
     </footer>
   );
 };

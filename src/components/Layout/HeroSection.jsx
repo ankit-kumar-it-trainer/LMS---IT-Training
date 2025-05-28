@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import { FaGraduationCap, FaLaptopCode, FaUsers } from 'react-icons/fa';
 
 const HeroSection = () => (
-  <section className="relative bg-[#1B1834] pt-20 pb-12 overflow-hidden">
+  <section className="relative bg-[#020817] pt-5 pb-12 overflow-hidden">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
         {/* Left: Content */}
         <div className="flex-1 text-center lg:text-left">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             Premium
-            <span className="text-primary-light"> Coding</span> Education
+            <span className="text-blue-500"> Coding</span> Education
             <br />
             At Your Fingertips
           </h1>
@@ -20,13 +20,13 @@ const HeroSection = () => (
           <div className="flex flex-wrap gap-6 justify-center lg:justify-start mb-12">
             <Link
               to="/courses"
-              className="px-8 py-3 bg-white hover:bg-gray-100 text-[#1B1834] font-semibold rounded-lg shadow-lg transform hover:scale-105 transition duration-200"
+              className="px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg shadow-lg transform hover:scale-105 transition duration-200"
             >
               Explore Courses
             </Link>
             <Link
               to="/contact"
-              className="px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-[#1B1834] font-semibold rounded-lg transform hover:scale-105 transition duration-200"
+              className="px-8 py-3 border-2 border-blue-500 text-blue-500 font-semibold rounded-lg transform hover:scale-105 transition duration-200"
             >
               Contact Us
             </Link>
@@ -36,21 +36,21 @@ const HeroSection = () => (
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto lg:mx-0">
             <div className="text-center">
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-3">
-                <FaGraduationCap className="w-6 h-6 text-primary" />
+                <FaGraduationCap className="w-6 h-6 text-blue-500" />
               </div>
               <h3 className="text-3xl font-bold text-white mb-1">10K+</h3>
               <p className="text-sm text-gray-300">Students Enrolled</p>
             </div>
             <div className="text-center">
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-3">
-                <FaLaptopCode className="w-6 h-6 text-primary" />
+                <FaLaptopCode className="w-6 h-6 text-blue-500" />
               </div>
               <h3 className="text-3xl font-bold text-white mb-1">100+</h3>
               <p className="text-sm text-gray-300">Coding Courses</p>
             </div>
             <div className="text-center">
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-3">
-                <FaUsers className="w-6 h-6 text-primary" />
+                <FaUsers className="w-6 h-6 text-blue-500" />
               </div>
               <h3 className="text-3xl font-bold text-white mb-1">50+</h3>
               <p className="text-sm text-gray-300">Industry Experts</p>

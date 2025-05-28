@@ -31,7 +31,27 @@ module.exports = {
       backgroundImage: {
         'hero-pattern': "url('/src/assets/hero-pattern.png')",
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-      }
+      },
+      animation: {
+        'twinkle': 'twinkle 3s infinite',
+        'float': 'float 6s infinite ease-in-out',
+        'float-delayed': 'float-delayed 8s infinite ease-in-out',
+        'spin-slow': 'spin 20s linear infinite',
+      },
+      keyframes: {
+        twinkle: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
+        'float-delayed': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-15px)' },
+        },
+      },
     },
   },
   plugins: [

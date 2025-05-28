@@ -8,7 +8,7 @@ const ContactSection = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: 'url("/path-to-your-image.jpg")', // Add your background image
-          backgroundColor: '#17152E',
+          backgroundColor: '#020817',
         }}
       />
 
@@ -26,7 +26,7 @@ const ContactSection = () => {
         {/* Contact Form Section */}
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Form */}
-          <div className="bg-black bg-opacity-50 p-8 rounded-lg">
+          <div className="bg-[#121F3B] bg-opacity-50 p-8 rounded-lg">
             <h3 className="text-xl text-white font-semibold mb-6">
               Send us a message
             </h3>
@@ -99,7 +99,7 @@ const ContactSection = () => {
 
               <button
                 type="submit"
-                className="w-32 bg-black text-white px-6 py-3 rounded flex items-center justify-between hover:bg-gray-900 transition-colors"
+                className="w-32 bg-blue-600 text-white px-6 py-3 rounded flex items-center justify-between hover:bg-blue-700 transition-colors"
               >
                 Submit
                 <span className="ml-2">→</span>
@@ -108,7 +108,7 @@ const ContactSection = () => {
           </div>
 
           {/* Contact Information */}
-          <div className="bg-[#3B4BDF] text-white p-8 rounded-lg flex flex-col justify-between">
+          <div className="bg-[#2D3BBB] text-white p-8 rounded-lg flex flex-col justify-between">
             <div>
               <h3 className="text-xl font-semibold mb-6">Contact Information</h3>
               <div className="mb-8">

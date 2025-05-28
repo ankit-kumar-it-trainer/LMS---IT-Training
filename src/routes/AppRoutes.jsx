@@ -5,6 +5,7 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import StudentDashboard from '../pages/StudentDashboard';
 import AdminDashboard from '../pages/AdminDashboard';
+import NotFound from '../pages/NotFound';
 
 const AppRoutes = () => {
   return (
@@ -32,6 +33,8 @@ const AppRoutes = () => {
             </ProtectedRoute>
           }
         />
+        {/* 404 route - must be last */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );

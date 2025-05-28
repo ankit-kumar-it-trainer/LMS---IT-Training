@@ -15,11 +15,11 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-[#1B1834]/80 backdrop-blur-lg border-b border-white/10">
+    <header className="sticky top-0 z-50 bg-[#020817] backdrop-blur-lg border-b border-[#020817]">
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <img src="/favicon.ico" alt="Logo" className="h-10 w-10" />
+          <img src="https://firebasestorage.googleapis.com/v0/b/cricket-pandith-34702.appspot.com/o/logo.png?alt=media&token=6434420b-c70c-449e-b459-160f4c268b1b" alt="Logo" className="h-10 w-10" />
           <div className="flex flex-col">
             <span className="text-lg font-bold text-white">Ankit Kumar - IT Trainer</span>
             <span className="text-xs text-gray-300">Learn to code like a pro</span>
