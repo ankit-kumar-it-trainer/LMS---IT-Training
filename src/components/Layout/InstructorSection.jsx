@@ -38,7 +38,7 @@ const InstructorSection = () => {
         <div className="flex-1">
           <img
             src="https://firebasestorage.googleapis.com/v0/b/cricket-pandith-34702.appspot.com/o/logo.png?alt=media&token=6434420b-c70c-449e-b459-160f4c268b1b"
-            alt="Ankit Kumar - IT Trainer"
+            alt="LumaTech Academy"
             className="rounded-lg shadow-lg object-cover w-full h-auto"
           />
         </div>

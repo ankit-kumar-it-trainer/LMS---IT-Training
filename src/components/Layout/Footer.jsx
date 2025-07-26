@@ -23,17 +23,17 @@ const Footer = () => {
             <div className="flex items-center gap-3 mb-6">
               <img
                 src="https://firebasestorage.googleapis.com/v0/b/cricket-pandith-34702.appspot.com/o/logo.png?alt=media&token=6434420b-c70c-449e-b459-160f4c268b1b"
-                alt="Ankit Kumar - IT Trainer"
+                alt="LumaTech Academy"
                 className="w-14 h-14 rounded-full object-cover"
               />
               <div>
-                <h2 className="text-2xl font-bold tracking-tight">Ankit Kumar - IT Trainer</h2>
-                <p className="text-xs text-gray-300 -mt-1">Learn to code like a pro</p>
+                <h2 className="text-2xl font-bold tracking-tight">LumaTech Academy</h2>
+                <p className="text-xs text-gray-300 -mt-1">Light Up Your Skills</p>
               </div>
             </div>
 
             <p className="text-gray-400 text-sm leading-relaxed mb-8 max-w-md">
-              Learn to code like a pro with Ankit Kumar. Expert IT Training, Coding Tips, and Career Guidance.
+              Light Up Your Skills with LumaTech Academy. Expert IT Training, Coding Tips, and Career Guidance.
             </p>
 
             <div className="space-y-4 mb-8">

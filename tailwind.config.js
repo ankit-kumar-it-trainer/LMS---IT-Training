@@ -25,8 +25,8 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        heading: ['Poppins', 'sans-serif']
+        sans: ['Open Sans', 'sans-serif'],
+        heading: ['Open Sans', 'sans-serif']
       },
       backgroundImage: {
         'hero-pattern': "url('/src/assets/hero-pattern.png')",

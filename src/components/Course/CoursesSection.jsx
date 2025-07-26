@@ -1,14 +1,14 @@
 import React from 'react';
 
 const features = [
-  'Dev Challenges',
-  'Tutorials',
-  'Articles',
-  'Core CS Subjects',
-  'Free Web Dev',
-  'Interview Experiences',
+   'Project-Based Learning',
+  'Expert Insights',
+  'Core Concepts',
   'Mock Tests',
-  'Quick Compiler',
+  'Interview Prep',
+  'Skill Challenges',
+  'Instant Compiler',
+  'Community Support',
 ];
 
 const studentAvatars = [
@@ -26,10 +26,10 @@ const CoursesSection = () => {
         {/* Left Side */}
         <div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
-            Crack the Code to<br />Success with CodeHelp
+            Ignite Your<br /> <span className="text-blue-500"> Future with </span> <br />LumaTech Academy
           </h2>
           <p className="text-gray-300 text-lg mb-8 max-w-xl">
-            Elevate your programming skills, solve challenges, and unlock the world of coding possibilities.
+            Level up your tech skills, build real-world projects, and unlock your full potential in today’s digital world.
           </p>
           <div className="flex flex-wrap gap-4 mb-8">
             <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-8 py-3 rounded-lg text-lg transition-all">
@@ -51,7 +51,7 @@ const CoursesSection = () => {
                 />
               ))}
             </div>
-            <span className="text-white font-medium text-base">70,000+ Happy Students</span>
+            <span className="text-white font-medium text-base">5,500+ Happy Students</span>
           </div>
         </div>
         {/* Right Side */}

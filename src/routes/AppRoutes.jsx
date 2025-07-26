@@ -6,6 +6,7 @@ import Register from '../pages/Register';
 import StudentDashboard from '../pages/StudentDashboard';
 import AdminDashboard from '../pages/AdminDashboard';
 import NotFound from '../pages/NotFound';
+import Tutorials from '../pages/Tutorials';
 
 const AppRoutes = () => {
   return (
@@ -33,6 +34,7 @@ const AppRoutes = () => {
             </ProtectedRoute>
           }
         />
+        <Route path="/tutorials" element={<Tutorials />} />
         {/* 404 route - must be last */}
         <Route path="*" element={<NotFound />} />
       </Routes>

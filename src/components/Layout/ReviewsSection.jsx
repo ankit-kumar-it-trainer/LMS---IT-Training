@@ -94,8 +94,7 @@ const ReviewsSection = () => {
       <div className="max-w-6xl mx-auto text-center mb-16">
         <h2 className="text-5xl md:text-6xl font-bold text-blue-500 mb-6">What our Student Says</h2>
         <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-          Discover inspiration and insights through recent reviews from our students. Their success stories reflect
-          the transformative journey of learning and growth with CodeHelp.
+          Hear from our learners as they share their journey with LumaTech Academy. Real stories of growth, skill-building, and career transformation.
         </p>
       </div>
       <div className="max-w-5xl mx-auto relative">
